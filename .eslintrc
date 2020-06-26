@@ -1,0 +1,8 @@
+{
+    "extends": [
+      "@regru/regru"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+}
