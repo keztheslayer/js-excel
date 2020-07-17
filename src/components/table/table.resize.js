@@ -1,6 +1,6 @@
 import { $ } from '@core/dom';
-export function initResize( $root, element ) {
-    const $resizer = $( element );
+export function initResize( $root, event ) {
+    const $resizer = $( event.target );
     const resizeType = $resizer.data.resize;
     const $parent = $resizer.closest('[data-type="resizable"]');
     const coords = $parent.getCoords();
