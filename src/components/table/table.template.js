@@ -1,6 +1,6 @@
 const charA = 65;
 const charZ = 90;
-const baseRowsCount = 4;
+const baseRowsCount = 15;
 
 function toCell( _, index ) {
     return `

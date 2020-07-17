@@ -73,9 +73,10 @@
     background: $primary-color;
     right: 0;
     bottom: 0;
+    z-index: 3;
 
     &:hover {
-      opacity: 1;
+      opacity: 1 !important;
     }
   }
 
