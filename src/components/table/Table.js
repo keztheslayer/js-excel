@@ -19,16 +19,27 @@ export class Table extends ExcelComponent {
     // eslint-disable-next-line @regru/prefer-early-return/prefer-early-return
     onMousedown( event ) {
         if ( event.target.dataset.resize ) {
+            const resizeType = event.target.dataset.resize;
             const $resizer = $( event.target );
             const $parent = $resizer.closest('[data-type="resizable"]');
             const coords = $parent.getCoords();
 
-            document.onmousemove = e => {
-                const delta = e.pageX - coords.right;
-                const value = coords.width + delta;
-
-                $parent.$el.style.width = `${value}px`;
-            };
+            if ( resizeType === 'col' ) {
+                document.onmousemove = e => {
+                    const delta = e.pageX - coords.right;
+                    const value = coords.width + delta;
+    
+                    $parent.$el.style.width = `${value}px`;
+                };
+            }
+            else {
+                document.onmousemove = e => {
+                    const delta = e.pageY - coords.bottom;
+                    const value = coords.height + delta;
+    
+                    $parent.$el.style.height = `${value}px`;
+                };
+            }
         }
 
         document.onmouseup = () => {
