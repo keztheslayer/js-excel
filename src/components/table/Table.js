@@ -25,11 +25,17 @@ export class Table extends ExcelComponent {
             const coords = $parent.getCoords();
 
             if ( resizeType === 'col' ) {
+                const colIndex = $parent.data.colIndex;
+                const cells = document.querySelectorAll(`[data-cell-index="${colIndex}"]`);
+
                 document.onmousemove = e => {
                     const delta = e.pageX - coords.right;
                     const value = coords.width + delta;
     
                     $parent.$el.style.width = `${value}px`;
+                    cells.forEach( cell => {
+                        cell.style.width = `${value}px`;
+                    } );
                 };
             }
             else {

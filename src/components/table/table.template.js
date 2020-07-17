@@ -2,15 +2,15 @@ const charA = 65;
 const charZ = 90;
 const baseRowsCount = 4;
 
-function toCell() {
+function toCell( _, index ) {
     return `
-        <div class="cell" contenteditable=""></div>
+        <div class="cell" contenteditable="" data-cell-index="${index}"></div>
     `;
 }
 
-function toColumn( column ) {
+function toColumn( column, index ) {
     return `
-        <div class="column" data-type="resizable">
+        <div class="column" data-type="resizable" data-col-index="${index}">
             ${column}
             <div class="column-resize" data-resize="col"></div>
         </div>
@@ -41,7 +41,9 @@ export function createTable( rowsCount = baseRowsCount ) {
     const firstRowColumns = new Array( colsCount )
         .fill()
         .map( toChar )
-        .map( toColumn )
+        .map( ( el, index ) => {
+            return toColumn( el, index );
+        } )
         .join('');
 
     rows.push( createRow( firstRowColumns, null ) );

@@ -52,6 +52,10 @@ class Dom {
     closest( selector ) {
         return $( this.$el.closest( selector ) );
     }
+
+    get data() {
+        return this.$el.dataset;
+    }
 }
 
 export function $( selector ) {
