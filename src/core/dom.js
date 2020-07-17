@@ -44,6 +44,14 @@ class Dom {
     off( eventType, callback ) {
         this.$el.removeEventListener( eventType, callback );
     }
+
+    getCoords( ) {
+        return this.$el.getBoundingClientRect();
+    }
+
+    closest( selector ) {
+        return $( this.$el.closest( selector ) );
+    }
 }
 
 export function $( selector ) {
