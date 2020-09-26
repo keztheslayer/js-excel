@@ -44,7 +44,7 @@ export function initResize( $root, event ) {
 
         if ( resizeType === 'col' ) {
             $parent.css( { width: `${value}px` } );
-            $root.findAll(`[data-cell-index="${colIndex}"]`)
+            $root.findAll(`[data-col="${colIndex}"]`)
                 .forEach( cell => {
                     cell.style.width = `${value}px`;
                 } );
