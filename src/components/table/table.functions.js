@@ -21,3 +21,30 @@ export function matrix( $target, $current ) {
         return acc;
     }, [] );
 }
+
+export function nextSelector( key, { col, row } ) {
+    const MIN_VALUE = 0;
+
+    let column = col;
+    
+    let line = row;
+
+    switch ( key ) {
+        case 'Enter':
+        case 'ArrowDown':
+            line++;
+            break;
+        case 'Tab':
+        case 'ArrowRight':
+            column++;
+            break;
+        case 'ArrowLeft':
+            column = column - 1 < MIN_VALUE ? MIN_VALUE : column - 1;
+            break;
+        case 'ArrowUp':
+            line = line - 1 < MIN_VALUE ? MIN_VALUE : line - 1;
+            break;
+    }
+
+    return `[data-id="${line}:${column}"]`;
+}
