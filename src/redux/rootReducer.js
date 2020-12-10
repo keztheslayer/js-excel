@@ -1,5 +1,17 @@
 export function rootReducer( state, action ) {
-    console.log( action );
-    
-    return state;
+    let prevState;
+
+    switch ( action.type ) {
+        case 'TABLE_RESIZE': 
+            prevState = state.colState || {};
+
+            prevState[action.data.id] = action.data.value;
+
+            return { 
+                ...state,
+                colState : prevState, // column id, width value
+            };
+
+        default: return state;
+    }
 }

@@ -6,6 +6,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "@regru/jquery-dollar-sign-reference/jquery-dollar-sign-reference": "off"
+      "@regru/jquery-dollar-sign-reference/jquery-dollar-sign-reference": "off",
+      "compat/compat": "off"
     }
 }
