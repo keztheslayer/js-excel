@@ -8,12 +8,13 @@ import { Table } from '@/components/table/Table';
 import { createStore } from '@core/createStore';
 import { rootReducer } from '@/redux/rootReducer';
 import { storage } from '@/core/utils';
+import { STORAGE_KEY } from '@/core/constants';
 
-const store = createStore( rootReducer, storage('excel-state') );
+const store = createStore( rootReducer, storage( STORAGE_KEY ) );
 
 store.subscribe( state => {
     console.log( 'App state', state );
-    storage( 'excel-state', state );
+    storage( STORAGE_KEY, state );
 } );
 
 const excel = new Excel( '#app', {
