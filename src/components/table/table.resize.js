@@ -9,13 +9,13 @@ export function initResize( $root, event ) {
 
         let value;
 
-        let colIndex;
+        let col;
 
         event.preventDefault();
 
         document.onmousemove = e => {
             if ( resizeType === 'col' ) {
-                colIndex = $parent.data.colIndex;
+                col = $parent.data.col;
 
                 const delta = e.pageX - coords.right;
                 
@@ -47,7 +47,7 @@ export function initResize( $root, event ) {
 
             if ( resizeType === 'col' ) {
                 $parent.css( { width: `${value}px` } );
-                $root.findAll(`[data-col="${colIndex}"]`)
+                $root.findAll(`[data-col="${col}"]`)
                     .forEach( cell => {
                         cell.style.width = `${value}px`;
                     } );
@@ -55,10 +55,10 @@ export function initResize( $root, event ) {
             else {
                 $parent.css( { height: `${value}px` } );
             }
-
             resolve( {
                 value,
-                id : resizeType === 'col' ? $parent.data.colIndex : null, 
+                resizeType,
+                id : $parent.data[resizeType],
             } );
 
             $resizer.css( {
