@@ -4,14 +4,17 @@ const baseRowsCount = 15;
 const DEFAULT_WIDTH = 120;
 
 function getWidth( state, index ) {
-    return ( state[index] || DEFAULT_WIDTH ) + 'px';
+    if ( state && state[index] ) {
+        return state[index] + 'px';
+    }
+    
+    return DEFAULT_WIDTH + 'px';
 }
 
 function toCell( state, row ) {
     return function( _, col ) {
         const width = getWidth( state.colState, col );
-
-        
+  
         return `
             <div 
                 data-type="cell"
