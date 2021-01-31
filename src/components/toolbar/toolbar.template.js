@@ -17,18 +17,18 @@ function toButton( button ) {
     `;
 }
 
-export function createToolbar() {
+export function createToolbar( state ) {
     const buttons = [
         {
             icon   : 'format_align_left',
-            active : false,
+            active : state.textAlign === 'left',
             value  : {
                 textAlign : 'left',
             },
         },
         {
             icon   : 'format_align_center',
-            active : false,
+            active : state.textAlign === 'center',
             value  : {
                 textAlign : 'center',
             },
@@ -36,30 +36,30 @@ export function createToolbar() {
         },
         {
             icon   : 'format_align_right',
-            active : false,
+            active : state.textAlign === 'right',
             value  : {
                 textAlign : 'right',
             },
         },
         {
             icon   : 'format_bold',
-            active : false,
+            active : state.fontWeight === 'bold',
             value  : {
-                fontWeight : 'bold',
+                fontWeight : state.fontWeight === 'bold' ? 'normal' : 'bold',
             },
         },
         {
             icon   : 'format_italic',
-            active : false,
+            active : state.fontStyle === 'italic',
             value  : {
-                fontStyle : 'italic',
+                fontStyle : state.fontStyle === 'italic' ? 'normal' : 'italic',
             },
         },
         {
             icon   : 'format_underlined',
-            active : false,
+            active : state.textDecoration === 'underline',
             value  : {
-                textDecoration : 'underline',
+                textDecoration : state.textDecoration === 'underline' ? 'none' : 'underline',
             },
         },
     ];

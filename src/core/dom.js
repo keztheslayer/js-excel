@@ -115,6 +115,14 @@ class Dom {
 
         return this;
     }
+
+    getStyles( styles = [] ) {
+        return styles.reduce( ( result, style ) => {
+            result[style] = this.$el.style[style];
+
+            return result;
+        }, {} );
+    }
 }
 
 export function $( selector ) {
