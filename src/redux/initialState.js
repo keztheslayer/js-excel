@@ -4,9 +4,16 @@ import { STORAGE_KEY, defaultStyles } from '@core/constants';
 const defaultState = {
     rowState      : {},
     colState      : {},
-    currentText   : '',
     dataState     : {},
+    stylesState   : {},
+    currentText   : '',
     currentStyles : defaultStyles,
 };
 
-export const initialState = storage( STORAGE_KEY ) || defaultState;
+const normalize = state => ( {
+    ...state,
+    currentStyles : defaultStyles,
+    currentText   : '',
+} );
+
+export const initialState = storage( STORAGE_KEY ) ? normalize( storage( STORAGE_KEY ) ) : defaultState;
