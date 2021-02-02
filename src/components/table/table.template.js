@@ -1,5 +1,6 @@
 import { toInlineStyles } from '@/core/utils';
 import { defaultStyles } from '@/core/constants';
+import { parse } from '@/core/parse';
 
 const charA = 65;
 const charZ = 90;
@@ -32,9 +33,10 @@ function toCell( state, row ) {
                 contenteditable=""
                 data-col="${col}"
                 data-id="${id}"
+                data-value="${data || ''}"
                 style="${styles};width: ${width} "
             >
-                ${data}
+                ${parse( data ) || ''}
             </div>
         `;        
     };
