@@ -25,8 +25,6 @@ export class ExcelPage extends Page {
             storage( storageName( params ), state );
         }, debounceTimeout );
 
-        console.log( this.params );
-
         store.subscribe( stateListener );
 
         this.excel = new Excel( {

@@ -3,8 +3,6 @@ import { storage } from '@/core/utils';
 function toHTML( key ) {
     const id = key.split(':')[1];
     const model = storage( key );
-
-    console.log( model.openedDate );
     
     return `
         <li class="db__record">
