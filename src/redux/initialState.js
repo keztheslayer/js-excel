@@ -1,5 +1,5 @@
-import { storage } from '@core/utils';
-import { STORAGE_KEY, defaultStyles, DEFAULT_TITLE } from '@core/constants';
+import { defaultStyles, DEFAULT_TITLE } from '@core/constants';
+import { clone } from '@core/utils';
 
 const defaultState = {
     currentStyles : defaultStyles,
@@ -9,6 +9,7 @@ const defaultState = {
     stylesState   : {},
     currentText   : '',
     title         : DEFAULT_TITLE,
+    openedDate    : new Date().toJSON(),
 };
 
 const normalize = state => ( {
@@ -17,4 +18,6 @@ const normalize = state => ( {
     currentText   : '',
 } );
 
-export const initialState = storage( STORAGE_KEY ) ? normalize( storage( STORAGE_KEY ) ) : defaultState;
+export function normalizeInitialState( state ) {
+    return state ? normalize( state ) : clone( defaultState );
+}
