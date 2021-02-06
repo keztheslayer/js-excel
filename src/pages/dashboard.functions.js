@@ -3,13 +3,16 @@ import { storage } from '@/core/utils';
 function toHTML( key ) {
     const id = key.split(':')[1];
     const model = storage( key );
-    const date = Date( id );
 
+    console.log( model.openedDate );
     
     return `
         <li class="db__record">
             <a href="#excel/${id}">${model.title}</a>
-            <strong>${date}</strong>
+            <strong>
+                ${new Date( model.openedDate ).toLocaleDateString()}
+                ${new Date( model.openedDate ).toLocaleTimeString()}
+            </strong>
         </li>
     `;
 }
